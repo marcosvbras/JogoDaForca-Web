@@ -1,0 +1,50 @@
+create database forca;
+
+use forca;
+
+create table ranking(
+email varchar(50) not null,
+acertos int(1) not null,
+erros int(1) not null);
+
+create table palavras(
+id integer not null auto_increment,
+palavra varchar(6) not null,
+dica varchar(150),
+primary key(id));
+
+insert into palavras values(null,'GOOGLE','Site de buscas e pesquisas.');
+
+insert into palavras values(null,'UPDATE','Atualização de algum recurso.');
+
+insert into palavras values(null,'GITHUB','Facebook para programadores.');
+
+insert into palavras values(null,'SADICO','Pessoa que sente prazer no sofrimento.');
+
+insert into palavras values(null,'EUROPA','Continente antigo.');
+
+insert into palavras values(null,'LEGADO','Ideal deixado para próxima geração.');
+
+insert into palavras values(null,'MEDICO','Profissional estudado para situações de doença.');
+
+insert into palavras values(null,'SOBRIO','Pessoa que não ingeriu bebida alcoólica.');
+
+insert into palavras values(null,'CARETA','Modificar a face de forma espontânea');
+
+insert into palavras values(null,'PAGINA','Presente em um livro e na internet');
+
+insert into palavras values(null,'FAVELA','Local com péssimas condições de moradia');
+
+insert into palavras values(null,'MAGICO','Profissional místico');
+
+insert into palavras values(null,'BANANA','Fruta amarela');
+
+insert into palavras values(null,'MANCHA','Marca causada por danos superficiais');
+
+insert into palavras values(null,'PICASA','Programa de edição de imagens');
+
+insert into palavras values(null,'BRASIL','Tomou 7 da Alemanha');
+
+insert into palavras values(null,'PROCON','Órgão público, utilizado para recorrer ações na justiça');
+
+insert into palavras values(null,'BACKUP','Recurso utilizado para salvar arquivos');
