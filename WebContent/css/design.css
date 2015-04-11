@@ -1,0 +1,222 @@
+@font-face {
+    font-family: Stroke;
+    src: url('../fonts/Stroke.ttf');
+    src: local(Stroke.ttf);
+    /*font-weight: 100;*/
+}
+@font-face {
+    font-family: Sketch;
+    src: url('../fonts/sketch-me__FREE-version.ttf');
+    src: local(sketch-me__FREE-version.ttf);
+    font-weight: 100;
+}
+
+@font-face {
+    font-family: TwinMarker;
+    src: url('../fonts/TwinMarker.ttf');
+    src: local(TwinMarker.ttf);
+    /*font-weight: 100;*/
+}
+
+@font-face {
+    font-family: Riot;
+    src: url('../fonts/RIOTfont1.ttf');
+    src: local(RIOTfont1.ttf);
+    /*font-weight: 100;*/
+}
+body{
+	margin: 0;
+  	padding: 0;
+}
+a{
+	text-decoration: none;
+}
+li{
+	list-style: none;
+	text-align: center;
+}
+.titulo{
+	font-family: Stroke;
+	color: #00008B;
+	font-size: 60px;
+	margin-top: 25px;
+	text-align: center;
+}
+.titulo1{
+	font-family: Stroke;
+	color: #00008B;
+	font-size: 100px;
+	margin-top: 15px;
+	text-align: center;
+}
+.titulo2{
+	font-family: TwinMarker;
+	color: #00008B;
+	font-size: 50px;
+	margin-top: 7%;
+	text-align: center;
+}
+.div-titulo{
+	width: 100%;
+	height: 50%;
+}
+.input-email{
+	height: 50px;
+	width: 400px;
+	border-radius: 5px;
+	font-size: 35px;
+	text-align: center;
+	margin-left: 35%;
+	color: #00008B;
+	font-family: TwinMarker;
+	border: 2px solid #00008B;
+}
+.input-tentativa{
+	height: 51px;
+	width: 51px;
+	border: solid 2px #00008B;
+	font-size: 40px;
+	text-align: center;
+	float: left;
+	font-family: TwinMarker;
+}
+.img-forca1{
+	margin-left: 30%;
+	margin-top: -26px;
+}
+.bt-enviar{
+	width: 120px;
+	height: 51px;
+	background: url('../imagens/btbg.jpg');
+	color: white;
+	text-align: center;
+	margin-left: 2px;
+	font-size: 40px;
+	line-height: 40px;
+	font-family: Sketch;
+	border-style: none;
+	border: 2px solid #00008B;
+}
+.bt-enviar:hover{
+	color: #00008B;
+	font-style: bolder;
+	cursor: hand;
+}
+.bt{
+	width: 220px;
+	height: 51px;
+	background: url('../imagens/btbg.jpg');
+	color: white;
+	text-align: center;
+	margin-left: 2px;
+	font-size: 40px;
+	line-height: 40px;
+	font-family: Sketch;
+	border-style: none;
+	border: 2px solid #00008B;
+}
+.bt:hover{
+	color: #00008B;
+	font-style: bolder;
+	cursor: hand;
+}
+.bt-jogar{
+	width: 90px;
+	height: 90px;
+	background: url('../imagens/btbg.jpg');
+	border-radius: 100%;
+	margin-left: 46.5%;
+	margin-top: 3%;
+	color: white;
+	text-align: center;
+	font-size: 40px;
+	font-family: Sketch;
+	border-style: none;
+	border: 2px solid #00008B;
+}
+.bt-jogar:hover{
+	color: #00008B;
+	font-style: bolder;
+	cursor: hand;
+}
+
+.rodape{
+	width: 100%;
+	position:absolute;
+	bottom:0;
+	font-family: Stroke;
+	color: #00008B;
+	font-style: bolder;
+}
+
+.corpo1{
+	float: left;
+	width: 50%;
+	height: 70%;
+}
+.corpo2{
+	width: 50%;
+	position: absolute;
+	right: 0px;
+	bottom: 80px;
+	height: 70%;
+}
+.text-chances{
+	font-family: TwinMarker;
+	font-size: 25px;
+	color: #00008B;
+	margin-top: -10px;
+}
+.text-dicas{
+	font-family: TwinMarker;
+	font-size: 25px;
+	color: #00008B;
+	clear: both;
+}
+.corpo2 div{
+	width: 51px;
+	height: 51px;
+	color: #00008B;
+	text-align: center;
+	margin-left: 2px;
+	font-size: 40px;
+	line-height: 40px;
+	font-family: Sketch;
+	border-bottom: 2px solid #00008B;
+}
+.div-left{
+	float: left;
+}
+.link-ranking{
+	color: #00008B;
+	font-size: 35px;
+	font-family: Sketch;
+	position: absolute;
+	top: 74%;
+	left: 46%;
+}
+.link-ranking:hover{
+	text-decoration: underline;
+}
+.text-email{
+	float: left;
+	font-family: TwinMarker;
+	font-size: 25px;
+	color: #00008B;
+	margin-right: 20%;
+	margin-left: 30%;
+	margin-top: -10px;
+}
+.text-palavra{
+	float: left;
+	font-family: TwinMarker;
+	font-size: 25px;
+	color: #00008B;
+	margin-top: -10px;
+}
+.error-message{
+	font-size: 20px;
+	color: red;
+	font-family: Stroke;
+}
+
