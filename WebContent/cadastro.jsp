@@ -11,12 +11,4 @@
 			<button type="submit" class="bt-jogar">Jogar</button>
 			${error_message}			
 		</form>
-		<div class="rodape">
-			<ul>
-				<li>Design por Marcos Vinícius</li>
-				<li>Desenvolvido por Marcos Vinícius</li>
-				<li>Versão 1.0</li>
-			</ul>
-		</div>
-	</body>
-</html>
+	<jsp:include page="rodape.jsp" />

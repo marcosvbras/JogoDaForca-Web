@@ -6,5 +6,5 @@
 		<h1 class="titulo1">Ranking</h1>
 		<p class="text-email">Email:</p>
 		<p class="text-palavra">Palavras Acertadas:</p>
-	</body>
-</html>
+	
+	<jsp:include page="rodape.jsp" />

@@ -19,15 +19,8 @@
 			<div class="div-letra div-left"></div>
 			<div class="div-letra div-left"></div>
 			<div class="div-letra"></div><br/>
-			<p class="text-dicas">Dica: </p>
+			<p class="text-dicas">Dica: ${palavra.dica}</p>
 		</div>
 		<b><a href="ranking.html" class="link-ranking">VER RANKING</a></b>
-		<div class="rodape">
-			<ul>
-				<li>Design por Marcos Vinícius</li>
-				<li>Desenvolvido por Marcos Vinícius</li>
-				<li>Versão 1.0</li>
-			</ul>
-		</div>
-	</body>
-</html>
+		
+		<jsp:include page="rodape.jsp" />
