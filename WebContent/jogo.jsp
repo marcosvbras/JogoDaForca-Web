@@ -1,9 +1,7 @@
-<html>
-	<head>
-		<title>Jogo da Forca</title>
-		<meta charset="UTF-8"/>
-		<link rel="stylesheet" type="text/css" href="css/design.css">
-	</head>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+	<jsp:include page="meta.jsp" />
+	
 	<body background="imagens/FOLHA_DE_CADERNO_BRANCA_2.jpg">
 		<div class="div-titulo"><h1 class="titulo">Jogo da Forca</h1><div>
 		<div class="corpo1">

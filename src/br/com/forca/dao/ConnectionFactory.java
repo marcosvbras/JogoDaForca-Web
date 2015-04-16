@@ -17,11 +17,9 @@ public class ConnectionFactory {
 		try{
 			return DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/forca", "root", "");						
 		}catch(SQLException ex) {
-			
 			System.out.println("SQLException: " + ex.getMessage());
 			System.out.println("SQLState: " + ex.getSQLState());
 			System.out.println("VendorError: " + ex.getErrorCode());
-			
 			throw new RuntimeException(ex);
 		}
 	}
