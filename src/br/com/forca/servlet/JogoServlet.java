@@ -98,7 +98,7 @@ public class JogoServlet extends HttpServlet {
 				request.getSession().setAttribute("mensagem", mensagem);
 				String email = (String)request.getSession().getAttribute("email");
 				RankingDAO dao = new RankingDAO();
-				dao.salvar(email, 1);
+				dao.salvar(email);
 			}
 		}
 		else
@@ -107,9 +107,6 @@ public class JogoServlet extends HttpServlet {
 			request.getSession().setAttribute("mensagem", mensagem);
 			request.getSession().setAttribute("chances", chances);	
 			request.getSession().setAttribute("mensagem", mensagem);
-			String email = (String)request.getSession().getAttribute("email");
-			RankingDAO dao = new RankingDAO();
-			dao.salvar(email, 0);
 		}
 		
 		String destino = "jogo.jsp";

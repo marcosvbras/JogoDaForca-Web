@@ -18,21 +18,15 @@ public class RankingDAO {
 		this.connection = new ConnectionFactory().getConnection();
 	}
 	
-	public void salvar(String email, int result)
+	public void salvar(String email)
 	{
-		String sql = "insert into ranking values(?, ?, ?)";
+		String sql = "insert into ranking values(?, ?)";
 		
 		try{
 			PreparedStatement stm = connection.prepareStatement(sql);
 			stm.setString(1, email);
-			if(result > 0)
-			{
-				stm.setInt(2, 1);
-				stm.setInt(3, 0);
-			} else {
-				stm.setInt(2, 0);
-				stm.setInt(3, 1);
-			}
+			stm.setInt(2, 1);
+
 			stm.execute();
 			stm.close();
 			
@@ -45,7 +39,7 @@ public class RankingDAO {
 	{
 		List<Ranking> listaRanking = new ArrayList<Ranking>();
 		Ranking ranking = new Ranking();
-		String sql = "select email, count(email) as 'acertos' from ranking group by email order by count(email) desc";
+		String sql = "select email, count(acertos) as 'acertos' from ranking group by email order by acertos desc";
 		
 		try{
 			PreparedStatement stm = connection.prepareStatement(sql);

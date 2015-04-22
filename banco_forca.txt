@@ -4,8 +4,7 @@ use forca;
 
 create table ranking(
 email varchar(50) not null,
-acertos int(1) not null,
-erros int(1) not null);
+acertos int(1) not null);
 
 create table palavras(
 id integer not null auto_increment,
