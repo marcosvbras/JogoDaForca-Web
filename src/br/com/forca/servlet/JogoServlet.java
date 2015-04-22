@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.forca.dao.PalavraDAO;
+import br.com.forca.dao.RankingDAO;
 import br.com.forca.model.Palavra;
 
 /**
@@ -44,14 +45,67 @@ public class JogoServlet extends HttpServlet {
 	}
 	
 	protected void novoJogo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		chances = 6;
 		String destino = "jogo.jsp";
-		Palavra palavra = new Palavra();
-		PalavraDAO dao = new PalavraDAO();
-		palavra = dao.escolherPalavra();
-		request.getSession().setAttribute("palavra", palavra);
-		request.getSession().setAttribute("chances", chances);
+		chances = 6;
+		//request.getSession().setAttribute("chances", 6);
+		Palavra palavra = (Palavra)request.getSession().getAttribute("palavra");
+		if (palavra == null) {
+			PalavraDAO dao = new PalavraDAO();
+			palavra = dao.escolherPalavra();
+			request.getSession().setAttribute("palavra", palavra);
+			request.getSession().setAttribute("chances", 6);
+		}
+		RequestDispatcher rd = request.getRequestDispatcher(destino);
+		rd.forward(request, response);
+	}
+	
+	protected void comparar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Palavra palavra = (Palavra)request.getSession().getAttribute("palavra");
+//		if (palavra == null) {
+//			PalavraDAO dao = new PalavraDAO();
+//			palavra = dao.escolherPalavra();
+//			request.getSession().setAttribute("palavra", palavra);
+//			request.getSession().setAttribute("chances", 6);
+//		}
+		String tentativa = request.getParameter("tentativa").toUpperCase();
+		String arrayPalavra[] = palavraToArray(palavra.getPalavra());
 		
+		String[] arrayTentativas = (String[])request.getSession().getAttribute("arrayTentativas");
+		arrayTentativas = compararLetra(arrayTentativas, arrayPalavra, tentativa);
+		String mensagem = null;
+		if(chances > 0)
+		{
+			int cont = 0;
+			for(int i = 0; i < 6; i++) {
+				if(arrayTentativas[i] == null) {
+					cont++;
+				}
+			}
+			
+			if(cont > 0) {
+				request.getSession().setAttribute("arrayTentativas", arrayTentativas);
+				request.getSession().setAttribute("chances", chances);	
+			}else {
+				request.getSession().setAttribute("arrayTentativas", arrayTentativas);
+				mensagem = "Você acertou!";
+				request.getSession().setAttribute("mensagem", mensagem);
+				String email = (String)request.getSession().getAttribute("email");
+				RankingDAO dao = new RankingDAO();
+				dao.salvar(email, 1);
+			}
+		}
+		else
+		{
+			mensagem = "Você perdeu!";
+			request.getSession().setAttribute("mensagem", mensagem);
+			request.getSession().setAttribute("chances", chances);	
+			request.getSession().setAttribute("mensagem", mensagem);
+			String email = (String)request.getSession().getAttribute("email");
+			RankingDAO dao = new RankingDAO();
+			dao.salvar(email, 0);
+		}
+		
+		String destino = "jogo.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(destino);
 		rd.forward(request, response);
 	}
