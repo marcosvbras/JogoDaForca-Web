@@ -55,4 +55,36 @@ public class JogoServlet extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher(destino);
 		rd.forward(request, response);
 	}
+	
+	protected String[] compararLetra(String[] arrayTentativas, String[] arrayPalavra, String tentativa) {
+		if (arrayTentativas == null) {
+			arrayTentativas = new String[6];
+		}
+		int cont = 0;
+		
+		for(int i = 0; i < 6; i++) {
+			if(arrayTentativas[i] == null) {
+				if(tentativa.equals(arrayPalavra[i])) {
+					arrayTentativas[i] = tentativa;
+					cont++;
+				}
+			}
+		}
+		
+		if(cont == 0) {
+			chances -= 1;
+		}
+		
+		return arrayTentativas;
+	}
+	
+	
+	protected String[] palavraToArray(String palavra) {
+        String arrayPalavra[] = new String[palavra.length()];
+        char[] p = palavra.toCharArray();
+        for (int i = 0; i < palavra.length(); i++) {
+        	arrayPalavra[i] = Character.toString(p[i]);	
+		}
+        return arrayPalavra;
+	}
 }
