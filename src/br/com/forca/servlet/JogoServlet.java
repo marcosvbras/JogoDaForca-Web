@@ -8,18 +8,19 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.websocket.Session;
 
 import br.com.forca.dao.PalavraDAO;
 import br.com.forca.dao.RankingDAO;
 import br.com.forca.model.Palavra;
 
 /**
- * Servlet implementation class JogoServlet
+ * Servlet implementation class PalavraServlet
  */
 @WebServlet("/jogo")
 public class JogoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -31,20 +32,21 @@ public class JogoServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
 	 */
-    
-    private int chances = 6;
-    
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String acao = request.getParameter("acao");
 		
 		if("verificar".equals(acao)) {
-			
-		} else {
+			comparar(request, response);
+		}else {
 			novoJogo(request, response);
 		}
+		
 	}
 	
+	private int chances; 
+	
 	protected void novoJogo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String destino = "jogo.jsp";
 		chances = 6;
 		//request.getSession().setAttribute("chances", 6);
@@ -57,6 +59,11 @@ public class JogoServlet extends HttpServlet {
 		}
 		RequestDispatcher rd = request.getRequestDispatcher(destino);
 		rd.forward(request, response);
+	}
+	
+	protected void salvar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		RankingDAO ranking = new RankingDAO();
+//		ranking.salvar(email, acertos);
 	}
 	
 	protected void comparar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

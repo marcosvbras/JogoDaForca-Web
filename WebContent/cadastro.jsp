@@ -9,6 +9,6 @@
 			<input type="hidden" name="acao" value="login">
 			<input type="text" class="input-email" name="email" autofocus>
 			<button type="submit" class="bt-jogar">Jogar</button>
-			${error_message}			
+			${mensagem}			
 		</form>
 	<jsp:include page="rodape.jsp" />

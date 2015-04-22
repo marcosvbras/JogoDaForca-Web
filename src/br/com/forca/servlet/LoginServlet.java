@@ -32,7 +32,7 @@ public class LoginServlet extends HttpServlet {
 		
 		if("login".equals(acao)) {
 			login(request, response);
-		} else {
+		}else {
 			request.getSession().invalidate();
 			RequestDispatcher rd = request.getRequestDispatcher("cadastro.jsp");
 			rd.forward(request, response);
