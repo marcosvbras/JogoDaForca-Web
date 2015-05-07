@@ -38,15 +38,14 @@
 	       		</c:if>
 	       		
 	       </c:forEach> 	
-			<br/>
-			<br/><p class="text-dicas">Dica: ${palavra.dica}</p>
+			<p class="text-dicas">Dica: ${palavra.dica}</p>
 			
-				<p class="error-message">${mensagem}</p>
+			<p class="error-message">${mensagem}</p>
 		</div>
 		<!--<form method="post" action="login">
 			<button class="bt-new" type="submit">Novo Jogo</button>
 		</form>-->
-		<b><a href="login" class="link-ranking" type="submit" value="ranking" >NOVO JOGO</a></b>
-		<b><a href="ranking" class="link-ranking" type="submit" value="ranking" name="acao" style="margin-left:150px;">VER RANKING</a></b>
+		<b><a href="login" class="link-ranking" type="submit" value="ranking" style="margin-left: 4%;">NOVO JOGO</a></b>
+		<b><a href="ranking" class="link-ranking" type="submit" value="ranking" name="acao" style="margin-left:20%">VER RANKING</a></b>
 			
 		<jsp:include page="rodape.jsp" />

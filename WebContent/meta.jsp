@@ -5,4 +5,7 @@
 	<head>
 		<title>Jogo da Forca - Identificação</title>
 		<link rel="stylesheet" type="text/css" href="css/design.css">
+		<link rel="shortcut icon" href="imagens/favicon.png" />
+		<meta name="description" content="Jogo da forca com design de rabiscos">
+   		<meta name="author" content="Marcos Vinícius Brás de Oliveira">
 	</head>
