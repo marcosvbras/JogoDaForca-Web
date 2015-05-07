@@ -37,24 +37,31 @@ public class RankingDAO {
 	
 	public List<Ranking> buscarRanking()
 	{
-		List<Ranking> listaRanking = new ArrayList<Ranking>();
-		Ranking ranking = new Ranking();
 		String sql = "select email, count(acertos) as 'acertos' from ranking group by email order by acertos desc";
+		List<Ranking> listaRanking = new ArrayList<Ranking>();
 		
 		try{
-			PreparedStatement stm = connection.prepareStatement(sql);
-			
+			PreparedStatement stm = connection.prepareStatement(sql);			
 			ResultSet rs = stm.executeQuery();
+			int cont = 0;
 			while(rs.next()){
-				ranking.setEmail(rs.getString("email"));
-				ranking.setAcertos(rs.getString("acertos"));
+				Ranking r = new Ranking();
+				r.setEmail(rs.getString("email"));
+				r.setAcertos(rs.getString("acertos"));
 				
-				listaRanking.add(ranking);
+				listaRanking.add(cont, r);
+				System.out.println("Passei aqui");
+				System.out.println(listaRanking.get(cont).getEmail());
+				cont++;
 			}
-
+			
 			rs.close();
 			stm.close();
-			
+//			for(int i = 0; i < listaRanking.size(); i++) {
+//				System.out.println(listaRanking.get(i).getEmail());
+//				System.out.println(listaRanking.get(i).getAcertos());
+//				System.out.println("\n");
+//			}
 		}catch(SQLException e){
 			System.out.println(e.getMessage());
 		}

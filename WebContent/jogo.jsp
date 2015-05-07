@@ -22,12 +22,12 @@
 			</form>
 			
 			<c:if test="${arrayTentativas eq null}">
-			<div class="div-letra div-left"></div>
-			<div class="div-letra div-left"></div>
-			<div class="div-letra div-left"></div>
-			<div class="div-letra div-left"></div>
-			<div class="div-letra div-left"></div>
-			<div class="div-letra div-left"></div>
+				<div class="div-letra div-left"></div>
+				<div class="div-letra div-left"></div>
+				<div class="div-letra div-left"></div>
+				<div class="div-letra div-left"></div>
+				<div class="div-letra div-left"></div>
+				<div class="div-letra div-left"></div>
 			</c:if>
 			<c:forEach items="${arrayTentativas}" var="letra">
 	       		<c:if test="${letra ne null}">

@@ -6,8 +6,8 @@
 }
 @font-face {
     font-family: Sketch;
-    src: url('../fonts/sketch-me__FREE-version.ttf');
-    src: local(sketch-me__FREE-version.ttf);
+    src: url('../fonts/sketch.ttf');
+    src: local(sketch.ttf);
     font-weight: 100;
 }
 
@@ -18,12 +18,6 @@
     /*font-weight: 100;*/
 }
 
-@font-face {
-    font-family: Riot;
-    src: url('../fonts/RIOTfont1.ttf');
-    src: local(RIOTfont1.ttf);
-    /*font-weight: 100;*/
-}
 body{
 	margin: 0;
   	padding: 0;
@@ -198,7 +192,7 @@ li{
 .link-ranking:hover{
 	text-decoration: underline;
 }
-.text-email{
+.text-email1{
 	float: left;
 	font-family: TwinMarker;
 	font-size: 25px;
@@ -207,12 +201,24 @@ li{
 	margin-left: 30%;
 	margin-top: -10px;
 }
-.text-palavra{
-	float: left;
+.text-palavra1{
 	font-family: TwinMarker;
 	font-size: 25px;
 	color: #00008B;
 	margin-top: -10px;
+}
+.text-email2{
+	clear:both;
+	font-family: TwinMarker;
+	font-size: 25px;
+	color: #00008B;
+	margin-top: -30px;
+}
+.text-palavra2{
+	font-family: TwinMarker;
+	font-size: 35px;
+	color: #00008B;
+	margin-top: -30px;
 }
 .error-message{
 	font-size: 20px;

@@ -32,11 +32,8 @@ public class RankingServlet extends HttpServlet {
 	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String acao = request.getParameter("acao");
-		
-		if("ranking".equals(acao)) {
+
 			exibirRanking(request, response);
-		}
 	}
 	
 	protected void exibirRanking(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
