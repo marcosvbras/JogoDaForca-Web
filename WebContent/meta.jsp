@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Jogo da Forca - Identificação</title>
+		<title>Jogo da Forca</title>
 		<link rel="stylesheet" type="text/css" href="css/design.css">
 		<link rel="shortcut icon" href="imagens/favicon.png" />
 		<meta name="description" content="Jogo da forca com design de rabiscos">

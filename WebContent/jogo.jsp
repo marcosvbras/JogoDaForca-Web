@@ -21,24 +21,9 @@
 	       		</c:if>
 			</form>
 			
-			<c:if test="${arrayTentativas eq null}">
-				<div class="div-letra div-left"></div>
-				<div class="div-letra div-left"></div>
-				<div class="div-letra div-left"></div>
-				<div class="div-letra div-left"></div>
-				<div class="div-letra div-left"></div>
-				<div class="div-letra div-left"></div>
-			</c:if>
-			<c:forEach items="${arrayTentativas}" var="letra">
-	       		<c:if test="${letra ne null}">
-	       			<div class="div-letra div-left">${letra}</div>
-	       		</c:if>
-	       		<c:if test="${letra eq null}">
-	       			<div class="div-letra div-left"></div>
-	       		</c:if>
-	       		
-	       </c:forEach> 	
-			<p class="text-dicas">Dica: ${palavra.dica}</p>
+	       	<p class="text-letras">${letras}</p>
+	       	 	
+			<p class="text-dicas">Dica: ${objetoPalavra.dica}</p>
 			
 			<p class="error-message">${mensagem}</p>
 		</div>

@@ -8,42 +8,40 @@ acertos int(1) not null);
 
 create table palavras(
 id integer not null auto_increment,
-palavra varchar(6) not null,
+palavra varchar(10) not null,
 dica varchar(150),
 primary key(id));
 
-insert into palavras values(null,'GOOGLE','Site de buscas e pesquisas.');
-
-insert into palavras values(null,'UPDATE','Atualização de algum recurso.');
-
-insert into palavras values(null,'GITHUB','Facebook para programadores.');
-
-insert into palavras values(null,'SADICO','Pessoa que sente prazer no sofrimento.');
-
-insert into palavras values(null,'EUROPA','Continente antigo.');
-
-insert into palavras values(null,'LEGADO','Ideal deixado para próxima geração.');
-
-insert into palavras values(null,'MEDICO','Profissional estudado para situações de doença.');
-
-insert into palavras values(null,'SOBRIO','Pessoa que não ingeriu bebida alcoólica.');
-
+insert into palavras values(null,'GOOGLE','Site de buscas e pesquisas');
+insert into palavras values(null,'ESQUADRO','Instrumento Triangular');
+insert into palavras values(null,'UPDATE','Atualização de algum recurso');
+insert into palavras values(null,'DETERGENTE','Você usa na cozinha');
+insert into palavras values(null,'GITHUB','Facebook para programadores');
+insert into palavras values(null,'PANTERA','Felino');
+insert into palavras values(null,'CARNAVAL','Festa brasileira');
+insert into palavras values(null,'BARATA','Inseto');
+insert into palavras values(null,'SORVETE','Sobremesa Refescante');
+insert into palavras values(null,'SADICO','Pessoa que sente prazer no sofrimento');
+insert into palavras values(null,'HIENA','Animal da savana');
+insert into palavras values(null,'LEGADO','Ideal deixado para próxima geração');
+insert into palavras values(null,'ENFERMEIRA','Cuida dos doentes');
+insert into palavras values(null,'SOBRIO','Pessoa que não ingeriu bebida alcoólica');
+insert into palavras values(null,'BOMBEIRO','Presta socorro');
 insert into palavras values(null,'CARETA','Modificar a face de forma espontânea');
-
+insert into palavras values(null,'ESPAGUETE','Prato Italiano');
 insert into palavras values(null,'PAGINA','Presente em um livro e na internet');
-
+insert into palavras values(null,'TERREMOTO','Movimento tectônico');
+insert into palavras values(null,'BICICLETA','Meio de transporte');
+insert into palavras values(null,'SANGUE','Tem em seu corpo');
+insert into palavras values(null,'SAMBA','Estilo musical');
 insert into palavras values(null,'FAVELA','Local com péssimas condições de moradia');
-
-insert into palavras values(null,'MAGICO','Profissional místico');
-
-insert into palavras values(null,'BANANA','Fruta amarela');
-
+insert into palavras values(null,'ALMOFADA','Decora o sofá');
+insert into palavras values(null,'SOQUETE','Meia curta');
 insert into palavras values(null,'MANCHA','Marca causada por danos superficiais');
-
 insert into palavras values(null,'PICASA','Programa de edição de imagens');
-
-insert into palavras values(null,'BRASIL','Tomou 7 da Alemanha');
-
-insert into palavras values(null,'PROCON','Órgão público, utilizado para recorrer ações na justiça');
-
+insert into palavras values(null,'BRASIL','Tomou 7 gols');
+insert into palavras values(null,'PROCON','Órgão público');
 insert into palavras values(null,'BACKUP','Recurso utilizado para salvar arquivos');
+insert into palavras values(null,'SUDOKU','Jogo de números');
+insert into palavras values(null,'ROMANTISMO','Movimento literário');
+insert into palavras values(null,'SUSHI','Comida japonesa');

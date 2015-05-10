@@ -32,70 +32,88 @@ public class JogoServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
 	 */
+    
+    private final String MENSAGEM_GANHOU = "Você acertou!";
+    private final String MENSAGEM_PERDEU = "Você perdeu!";
+    
+    private int palavra_size;
+    private int chances; 
+    private String[] arrayAcertos, arrayPalavra;
+    private String palavra, letras;
+    
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String acao = request.getParameter("acao");
 		
 		if("verificar".equals(acao)) {
-			comparar(request, response);
+			verificar(request, response);
 		}else {
 			novoJogo(request, response);
 		}
 		
 	}
-	
-	private int chances; 
-	
+		
 	protected void novoJogo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		PalavraDAO dao = new PalavraDAO();
+		Palavra p = dao.escolherPalavra();
+		request.getSession().setAttribute("objetoPalavra", p);
+		this.palavra = p.getPalavra();
+		request.getSession().setAttribute("palavra", this.palavra);
+		this.arrayPalavra = palavraToStringArray(palavra);
+		request.getSession().setAttribute("arrayPalavra", this.arrayPalavra);
+		this.arrayAcertos = new String[this.palavra.length()];
+		request.getSession().setAttribute("arrayAcertos", this.arrayAcertos);
+		this.letras = montarAcertos(this.arrayAcertos);
+		System.out.println("novoJogo - Letras: " + this.letras);
+		request.getSession().setAttribute("letras", letras);
+		chances = 6;
+		request.getSession().setAttribute("chances", 6);
 		
 		String destino = "jogo.jsp";
-		chances = 6;
-		//request.getSession().setAttribute("chances", 6);
-		Palavra palavra = (Palavra)request.getSession().getAttribute("palavra");
-		if (palavra == null) {
-			PalavraDAO dao = new PalavraDAO();
-			palavra = dao.escolherPalavra();
-			request.getSession().setAttribute("palavra", palavra);
-			request.getSession().setAttribute("chances", 6);
-		}
 		RequestDispatcher rd = request.getRequestDispatcher(destino);
 		rd.forward(request, response);
 	}
 	
-	protected void salvar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		RankingDAO ranking = new RankingDAO();
-//		ranking.salvar(email, acertos);
+	private String montarAcertos(String[] arrayAcertos) {
+		String letras = "";
+		
+		for(int i = 0; i < arrayAcertos.length; i++) {
+			if(arrayAcertos[i] == null) {
+				letras += "_ ";
+			} else {
+				letras += arrayAcertos[i] + " ";
+			}
+		}
+		
+		return letras;
 	}
 	
-	protected void comparar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Palavra palavra = (Palavra)request.getSession().getAttribute("palavra");
-//		if (palavra == null) {
-//			PalavraDAO dao = new PalavraDAO();
-//			palavra = dao.escolherPalavra();
-//			request.getSession().setAttribute("palavra", palavra);
-//			request.getSession().setAttribute("chances", 6);
-//		}
+	private void pegarValoresDaSessao(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		this.arrayAcertos = (String[]) request.getSession().getAttribute("arrayAcertos");
+		for(int i = 0; i < arrayAcertos.length; i++) {
+			System.out.println(arrayAcertos[i]);
+		}
+		this.arrayPalavra = (String[]) request.getSession().getAttribute("arrayPalavra");
+		this.palavra = (String) request.getSession().getAttribute("palavra");
+		this.letras = (String) request.getSession().getAttribute("letras");
+		System.out.println("pegarValoresDaSessao - Letras: " + this.letras);
+		this.chances = (int) request.getSession().getAttribute("chances");
+	}
+	
+	protected void verificar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String tentativa = request.getParameter("tentativa").toUpperCase();
-		String arrayPalavra[] = palavraToArray(palavra.getPalavra());
-		
-		String[] arrayTentativas = (String[])request.getSession().getAttribute("arrayTentativas");
-		arrayTentativas = compararLetra(arrayTentativas, arrayPalavra, tentativa);
+		pegarValoresDaSessao(request, response);
+		this.arrayAcertos = compararLetra(tentativa);
+		request.getSession().setAttribute("arrayAcertos", this.arrayAcertos); 
+		this.letras = montarAcertos(this.arrayAcertos);
+		System.out.println("verificar - Letras: " + this.letras + "\n");
+		request.getSession().setAttribute("letras", this.letras);
+		request.getSession().setAttribute("chances", this.chances);	
 		String mensagem = null;
-		if(chances > 0)
+		
+		if(this.chances > 0)
 		{
-			int cont = 0;
-			for(int i = 0; i < 6; i++) {
-				if(arrayTentativas[i] == null) {
-					cont++;
-				}
-			}
-			
-			if(cont > 0) {
-				request.getSession().setAttribute("arrayTentativas", arrayTentativas);
-				request.getSession().setAttribute("chances", chances);	
-			}else {
-				request.getSession().setAttribute("arrayTentativas", arrayTentativas);
-				mensagem = "Você acertou!";
-				request.getSession().setAttribute("mensagem", mensagem);
+			if(ganhou()) {
+				mensagem = MENSAGEM_GANHOU;
 				String email = (String)request.getSession().getAttribute("email");
 				RankingDAO dao = new RankingDAO();
 				dao.salvar(email);
@@ -103,41 +121,48 @@ public class JogoServlet extends HttpServlet {
 		}
 		else
 		{
-			mensagem = "Você perdeu!";
-			request.getSession().setAttribute("mensagem", mensagem);
-			request.getSession().setAttribute("chances", chances);	
-			request.getSession().setAttribute("mensagem", mensagem);
+			mensagem = MENSAGEM_PERDEU;
 		}
 		
+		request.getSession().setAttribute("mensagem", mensagem);
 		String destino = "jogo.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(destino);
 		rd.forward(request, response);
 	}
 	
-	protected String[] compararLetra(String[] arrayTentativas, String[] arrayPalavra, String tentativa) {
-		if (arrayTentativas == null) {
-			arrayTentativas = new String[6];
-		}
-		int cont = 0;
-		
-		for(int i = 0; i < 6; i++) {
-			if(arrayTentativas[i] == null) {
-				if(tentativa.equals(arrayPalavra[i])) {
-					arrayTentativas[i] = tentativa;
-					cont++;
-				}
+	private String[] compararLetra(String tentativa) {
+		int cont = 0; 
+
+		for(int i = 0; i < this.palavra.length() ; i++) {
+			if(tentativa.equals(this.arrayPalavra[i])) {
+				this.arrayAcertos[i] = tentativa;
+				cont++;
 			}
 		}
 		
 		if(cont == 0) {
-			chances -= 1;
+			chances--;
 		}
 		
-		return arrayTentativas;
+		return arrayAcertos;
 	}
 	
+	private boolean ganhou() {
+		boolean resultado = false;
+		int cont = 0;
+		for(int i = 0; i < this.palavra.length(); i ++) {
+			if(this.arrayAcertos[i] == null) {
+				cont++;
+			}
+		}
+		
+		if(cont == 0) {
+			resultado = true;
+		}
+		return resultado;
+	}
 	
-	protected String[] palavraToArray(String palavra) {
+	private String[] palavraToStringArray(String palavra) {
         String arrayPalavra[] = new String[palavra.length()];
         char[] p = palavra.toCharArray();
         for (int i = 0; i < palavra.length(); i++) {
