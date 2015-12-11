@@ -4,7 +4,7 @@
 			<ul>
 				<li>Design por Marcos Vinícius</li>
 				<li>Desenvolvido por Marcos Vinícius</li>
-				<li>Versão 1.0</li>
+				<li>Versão 2.0</li>
 			</ul>
 		</div>
 	</body>

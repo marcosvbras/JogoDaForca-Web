@@ -6,7 +6,7 @@
 	<body background="imagens/FOLHA_DE_CADERNO_BRANCA_2.jpg">
 		<div class="div-titulo"><h1 class="titulo">Jogo da Forca</h1><div>
 		<div class="corpo1">
-			<img src="imagens/${chances}.png" class="img-forca1">
+			<img src="imagens/f${chances}.png" class="img-forca1">
 		</div>
 		<div class="corpo2">
 			<p class="text-chances">Chances: ${chances}</p>
